@@ -4,22 +4,24 @@ pipeline {
         jdk 'JDK21'
     }
     stages {
-        stage('Checkout code')
-        {
+        stage('Checkout code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Jamina-ENSI/Hello_example.git'
+                git branch: 'main', url: 'https://github.com/FatmaDaldoul/GIT--TEST'
             }
         }
-        stage('Compile code')
-        {
+        stage('Compile code') {
             steps {
-                sh 'javac Test.java'
+                sh 'cd src && javac application/Test.java'
             }
         }
-        stage('Execute code')
-        {
+        stage('Execute code') {
             steps {
-                sh 'java Test '
+                sh 'cd src && java application.Test'
+            }
+        }
+        stage('display message') {
+            steps {
+                echo 'Hello from github'
             }
         }
     }
